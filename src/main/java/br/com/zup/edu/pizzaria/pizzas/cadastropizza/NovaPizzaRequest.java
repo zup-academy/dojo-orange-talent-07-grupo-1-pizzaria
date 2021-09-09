@@ -23,6 +23,9 @@ public class NovaPizzaRequest {
     @Size(min = 1)
     private List<Long> ingredientes;
 
+    @Deprecated
+    public NovaPizzaRequest() {
+    }
 
     @JsonCreator(mode = PROPERTIES)
     public NovaPizzaRequest(String sabor,
@@ -36,5 +39,13 @@ public class NovaPizzaRequest {
         List<Ingrediente> ingredientes = repository.findAllById(this.ingredientes);
 
         return new Pizza(sabor, ingredientes);
+    }
+
+    public String getSabor() {
+        return sabor;
+    }
+
+    public List<Long> getIngredientes() {
+        return ingredientes;
     }
 }
