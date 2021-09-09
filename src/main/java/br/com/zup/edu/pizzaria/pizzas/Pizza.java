@@ -20,7 +20,7 @@ public class Pizza {
     @Column(unique = true, nullable = false)
     private String sabor;
 
-    private BigDecimal preco;
+    private BigDecimal preco = BigDecimal.ZERO;
 
     @ManyToMany
     private List<Ingrediente> ingredientes = new ArrayList<>();
@@ -39,6 +39,7 @@ public class Pizza {
     }
 
     private void calcularPreco() {
+
         this.preco.add(PRECO_MASSA);
         this.preco.add(PRECO_MAO_DE_OBRA);
         this.ingredientes.stream()
